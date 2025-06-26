@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArklayMart - Your One-Stop Shopping Destination</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/894f19104b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="javascript.js"></script>
+
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <!-- Top Header -->
+    <div id="top" class="d-flex mb-3 flex-wrap" style="background-color: #F5F5F5; font-size: 12px; color: #888888;">
+        <div class="me-auto p-2">Selamat datang di ArklayMart</div>
+        <div class="p-2 d-none d-md-block"><span class="material-icons">location_on</span> Alamat pengiriman |</div>
+        <div class="p-2 d-none d-md-block"><span class="material-icons">local_shipping</span> Lacak pengiriman |</div>
+        <div class="p-2"><span class="material-icons">local_offers</span>Penawaran</div>
+    </div>
+
+    <!-- Main Header -->
+    <div id="top" class="d-flex align-items-center mb-3 flex-wrap" style="font-size: 15px; color: #666666;">
+        <div class="me-auto p-2 h3 d-flex align-items-center" style="color: #008ECC;">
+            <span id="sidebar" class="material-icons me-2">store</span> 
+            <span class="d-none d-sm-inline">ArklayMart</span>
+            <span class="d-inline d-sm-none">AM</span>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="p-2 flex-grow-1" style="max-width: 500px;">
+            <div class="input-group search-container">
+                <span class="input-group-text border-0 shadow-none">
+                    <span class="material-icons">search</span>
+                </span>
+                <input id="navbar" type="text" class="form-control border-0 shadow-none" 
+                       placeholder="Cari di ArklayMart" aria-label="Cari di ArklayMart">
+                <span class="input-group-text border-0 shadow-none">
+                    <span class="material-icons">format_list_bulleted</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- User Actions -->
+        <div class="p-2 desktop-menu">
+            <span id="top2" class="material-icons me-2">person</span> 
+            <span class="d-none d-lg-inline">Sign Up/Sign In |</span>
+        </div>
+        <div class="p-2 cart-icon" onclick="addToCart()">
+            <span id="top2" class="material-icons">local_grocery_store</span> 
+            <span class="d-none d-lg-inline">Keranjang</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle p-2" onclick="toggleMobileMenu()">
+            <span class="material-icons">menu</span>
+        </button>
+    </div>
+
+    <div class="d-flex mb-3 border-bottom"></div>
+
+    <!-- Categories -->
+    <div id="top" class="d-flex flex-wrap justify-content-center" id="categories">
+        <div id="kategori" class="p-2 px-4 m-1 flex-fill" onclick="selectCategory('Fashion')">
+            Fashion <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="p-2 px-4 m-1 flex-fill" onclick="selectCategory('Fresh Fruits')">
+            Fresh Fruits <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="p-2 px-4 m-1 flex-fill" onclick="selectCategory('Home & Kitchen')">
+            Home & Kitchen <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="p-2 px-4 m-1 flex-fill" onclick="selectCategory('Electronics')">
+            Electronics <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="d-none d-lg-block p-2 px-4 m-1 flex-fill" onclick="selectCategory('Face & Beauty')">
+            Face & Beauty <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="d-none d-lg-block p-2 px-4 m-1 flex-fill" onclick="selectCategory('Home Furniture')">
+            Home Furniture <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="d-none d-xl-block p-2 px-4 m-1 flex-fill" onclick="selectCategory('Sports')">
+            Sports <span class="material-icons">expand_more</span>
+        </div>
+        <div id="kategori" class="d-none d-xl-block p-2 px-4 m-1 flex-fill" onclick="selectCategory('Toys & Hobby')">
+            Toys & Hobby <span class="material-icons">expand_more</span>
+        </div>
+    </div>
+
+    <div class="d-flex mb-3 border-bottom my-4"></div>
+
+    <!-- Carousel -->
+    <div id="top">
+    <div id="carouselExample" class="carousel slide w-100 mx-auto my-4 rounded-4" data-bs-ride="carousel" aria-label="Promotional carousel">
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Promotional slide 1"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Promotional slide 2"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Promotional slide 3"></button>
+        </div>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="image/banner1.png" class="d-block w-100 rounded-4 carousel-image" alt="Smartphone sale banner">
+            <div class="carousel-caption d-none d-md-block">
+            <!-- <h2 class="fw-bold text-white">🎉 Flash Sale Smartphone!</h2>
+            <p class="text-white">Diskon hingga 50% untuk semua smartphone</p> -->
+            <button class="btn btn-primary interactive-btn" onclick="goToProducts()">Belanja Sekarang</button>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="image/banner2.png" class="d-block w-100 rounded-4 carousel-image" alt="Furniture sale banner">
+            <div class="carousel-caption d-none d-md-block">
+            <!-- <h2 class="fw-bold text-white">🏠 Furniture Sale</h2>
+            <p class="text-white">Dekorasi rumah impian dengan harga terbaik</p> -->
+            <button class="btn btn-primary interactive-btn" onclick="goToProducts()">Jelajahi</button>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="image/banner3.png" class="d-block w-100 rounded-4 carousel-image" alt="Beauty and care banner">
+            <div class="carousel-caption d-none d-md-block">
+            <!-- <h2 class="fw-bold text-white">💄 Beauty & Care</h2>
+            <p class="text-white">Produk kecantikan terlengkap dan terpercaya</p> -->
+            <button class="btn btn-primary interactive-btn" onclick="goToProducts()">Lihat Koleksi</button>
+            </div>
+        </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    </div>
+
+    <!-- Smartphone Deals -->
+    <div id="top" class="d-flex flex-column pb-2" style="color: #666666;">
+        <div class="d-flex justify-content-between align-items-center w-100 border-bottom border-3 my-4 flex-wrap">
+            <div class="h2 m-0">
+                Penawaran terbaik 
+                <span style="color: #008ECC;">Smartphone</span>
+                <span id="countdown" class="ms-2 fs-4 fw-bold" style="color: white; background-color: #008ECC; padding-inline: 10px; border-radius: 5px;">05:23:15</span> 
+            </div>        
+            <div class="p-2 d-flex align-items-center" style="cursor: pointer;" onclick="viewAll('smartphone')">
+                View All<span class="material-icons fs-3">chevron_right</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="top" class="row g-3">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div id="product" class="p-3" onclick="viewProduct('Galaxy S25 Ultra')">
+                <img src="image/s25ultra.avif" alt="Galaxy S25 Ultra" style="height: 150px; width: 100%; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                <b>Galaxy S25 Ultra</b><br>
+                <del>Rp23.999.000</del><br>
+                <span style="color: rgb(1, 156, 1);"><b>-12.5%</b></span><br>
+                <b>Rp20.999.000</b>
+                <div class="mt-2">
+                    <button class="interactive-btn w-100" onclick="addToCart('Galaxy S25 Ultra')">+ Keranjang</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div id="product" class="p-3" onclick="viewProduct('Galaxy S25')">
+                <img src="image/s25.avif" alt="Galaxy S25 Ultra" style="height: 150px; width: 100%; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                <b>Galaxy S25</b><br>
+                <del>Rp14.999.000</del><br>
+                <span style="color: rgb(1, 156, 1);"><b>-6.6%</b></span><br>
+                <b>Rp13.999.000</b>
+                <div class="mt-2">
+                    <button class="interactive-btn w-100" onclick="addToCart('Galaxy S25')">+ Keranjang</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div id="product" class="p-3" onclick="viewProduct('Galaxy Z Fold 6')">
+                <img src="image/zfold6.avif" alt="Galaxy S25 Ultra" style="height: 150px; width: 100%; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                <b>Galaxy Z Fold 6</b><br>
+                <del>Rp26.499.000</del><br>
+                <span style="color: rgb(1, 156, 1);"><b>-13.2%</b></span><br>
+                <b>Rp23.000.000</b>
+                <div class="mt-2">
+                    <button class="interactive-btn w-100" onclick="addToCart('Galaxy Z Fold 6')">+ Keranjang</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div id="product" class="p-3" onclick="viewProduct('Galaxy A55')">
+                <img src="image/a55.avif" alt="Galaxy S25 Ultra" style="height: 150px; width: 100%; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                <b>Galaxy A55</b><br>
+                <del>Rp6.999.000</del><br>
+                <span style="color: rgb(1, 156, 1);"><b>-14.2%</b></span><br>
+                <b>Rp6.000.000</b>
+                <div class="mt-2">
+                    <button class="interactive-btn w-100" onclick="addToCart('Galaxy A55')">+ Keranjang</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div id="product" class="p-3" onclick="viewProduct('Galaxy S23 FE')">
+                <img src="image/s23fe.avif" alt="Galaxy S25 Ultra" style="height: 150px; width: 100%; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                <b>Galaxy S23 FE</b><br>
+                <del>Rp9.999.000</del><br>
+                <span style="color: rgb(1, 156, 1);"><b>-20%</b></span><br>
+                <b>Rp7.999.000</b>
+                <div class="mt-2">
+                    <button class="interactive-btn w-100" onclick="addToCart('Galaxy S23 FE')">+ Keranjang</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div id="product" class="p-3" onclick="viewProduct('Galaxy S25 Ultra')">
+                <img src="image/s25ultra.avif" alt="Galaxy S25 Ultra" style="height: 150px; width: 100%; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                <b>Galaxy S25 Ultra</b><br>
+                <del>Rp23.999.000</del><br>
+                <span style="color: rgb(1, 156, 1);"><b>-12.5%</b></span><br>
+                <b>Rp20.999.000</b>
+                <div class="mt-2">
+                    <button class="interactive-btn w-100" onclick="addToCart('Galaxy S25 Ultra')">+ Keranjang</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <!-- Top Categories -->
+    <div id="top" class="d-flex flex-column pb-2 mt-4" style="color: #666666;">
+        <div class="d-flex justify-content-between align-items-center w-100 border-bottom border-3 my-4">
+            <div class="h2 m-0">Belanja <span style="color: #008ECC;">Top Kategori</span></div>        
+            <div class="p-2 d-flex align-items-center" style="cursor: pointer;" onclick="viewAll('categories')">
+                View All<span class="material-icons fs-3">chevron_right</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="top" class="row justify-content-center g-3" style="align-items: center;">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div id="top_kategori" class="p-2" onclick="selectCategory('Smartphone')">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <img src="image/a55.avif" alt="Smartphone category" style="max-height: 80px; width: auto; object-fit: contain;">
+                </div>
+                <br>Smartphone
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div id="top_kategori" class="p-2" onclick="selectCategory('Skincare')">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <img src="image/skincare.png" alt="Smartphone category" style="max-height: 80px; width: auto; object-fit: contain;">
+                </div>
+                <br>Skincare
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div id="top_kategori" class="p-2" onclick="selectCategory('Electronics')">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <img src="image/washing.png" alt="Smartphone category" style="max-height: 80px; width: auto; object-fit: contain;">
+                </div>
+                <br>Electronics
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div id="top_kategori" class="p-2" onclick="selectCategory('Furniture')">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <img src="image/chair.png" alt="Smartphone category" style="max-height: 80px; width: auto; object-fit: contain;">
+                </div>
+                <br>Furniture
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div id="top_kategori" class="p-2" onclick="selectCategory('Watches')">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <img src="image/watch.png" alt="Smartphone category" style="max-height: 80px; width: auto; object-fit: contain;">
+                </div>
+                <br>Watches
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div id="top_kategori" class="p-2" onclick="selectCategory('Accessories')">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <img src="image/ring.png" alt="Smartphone category" style="max-height: 80px; width: auto; object-fit: contain;">
+                </div>
+                <br>Accessories
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Brands -->
+    <div id="top" class="d-flex flex-column pb-2 mt-5" style="color: #666666;">
+        <div class="d-flex justify-content-between align-items-center w-100 border-bottom border-3 my-4">
+            <div class="h2 m-0">Top <span style="color: #008ECC;">Brand</span></div>        
+            <div class="p-2 d-flex align-items-center" style="cursor: pointer;" onclick="viewAll('brands')">
+                View All<span class="material-icons fs-3">chevron_right</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="top" class="row g-3">
+        <div class="col-lg-4 col-md-6 col-12">
+            <div id="brand" class="p-4 text-center" onclick="selectBrand('Apple')" style="background: url('image/apple-3.png') no-repeat center center; background-size: cover; color: white; border-radius: 15px; overflow: hidden; position: relative;">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+            <div id="brand" class="p-4 text-center" onclick="selectBrand('Apple')" style="background: url('image/realme.png') no-repeat center center; background-size: cover; color: white; border-radius: 15px; overflow: hidden; position: relative;">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+            <div id="brand" class="p-4 text-center" onclick="selectBrand('Apple')" style="background: url('image/xiaomi.png') no-repeat center center; background-size: cover; color: white; border-radius: 15px; overflow: hidden; position: relative;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Needs -->
+    <div id="top" class="d-flex flex-column pb-2 mt-4" style="color: #666666;">
+        <div class="d-flex justify-content-between align-items-center w-100 border-bottom border-3 my-4">
+            <div class="h2 m-0">Keperluan<span style="color: #008ECC;"> Harian</span></div>        
+            <div class="p-2 d-flex align-items-center" style="cursor: pointer;" onclick="viewAll('daily')">
+                View All<span class="material-icons fs-3">chevron_right</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="top" class="row g-3 mb-5">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="harian text-center" onclick="selectDaily('Sayuran')">
+                <div style="font-size: 48px; margin-bottom: 15px;">
+                    <img src="image/list02.png" alt="">
+                </div>
+                Sayuran<br>
+                <span class="h5">Diskon 50%</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="harian text-center" onclick="selectDaily('Kebutuhan Bayi')">
+                <div style="font-size: 48px; margin-bottom: 15px;">
+                    <img src="image/list05.png" alt="">
+                </div>
+                Kebutuhan Bayi<br>
+                <span class="h5">Diskon 59%</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="harian text-center" onclick="selectDaily('Keperluan Ngopi')">
+                <div style="font-size: 48px; margin-bottom: 15px;">
+                    <img src="image/list08.png" alt="">
+                </div>
+                Keperluan Ngopi<br>
+                <span class="h5">Diskon 40%</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="harian text-center" onclick="selectDaily('Lauk Pauk')">
+                <div style="font-size: 48px; margin-bottom: 15px;">
+                    <img src="image/list11.png" alt="">
+                </div>
+                Lauk Pauk<br>
+                <span class="h5">Diskon 34%</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="harian text-center" onclick="selectDaily('Sarapan')">
+                <div style="font-size: 48px; margin-bottom: 15px;">
+                    <img src="image/list14.png" alt="">
+                </div>
+                Sarapan<br>
+                <span class="h5">Diskon 67%</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="harian text-center" onclick="selectDaily('Serat & Gandum')">
+                <div style="font-size: 48px; margin-bottom: 15px;">
+                    <img src="image/list17.png" alt="">
+                </div>
+                Serat & Gandum<br>
+                <span class="h5">Diskon 29%</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div id="bottom" class="text-white">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="h1 mb-4">ArklayMart</div>
+                <div class="h5 mb-3">Contact Us</div>
+                <div class="mb-3 d-flex align-items-center">
+                    <i class="fa-brands fa-whatsapp fs-3 me-3"></i>
+                    <div>
+                        <div class="fw-bold">WhatsApp</div>
+                        <div>+62 858-7895-752</div>
+                    </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <i class="fa-solid fa-phone fs-4 me-3"></i>
+                    <div>
+                        <div class="fw-bold">Call Us</div>
+                        <div>+62 858-7895-752</div>
+                    </div>
+                </div>
+                <div class="h5 mb-3">Download App</div>
+                <div class="d-flex gap-3">
+                    <div class="p-2" style="background: #333; border-radius: 10px; cursor: pointer;" onclick="downloadApp('android')">
+                        <div style="font-size: 24px;">📱</div>
+                        <small>Google Play</small>
+                    </div>
+                    <div class="p-2" style="background: #333; border-radius: 10px; cursor: pointer;" onclick="downloadApp('ios')">
+                        <div style="font-size: 24px;">📲</div>
+                        <small>App Store</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="h5 border-bottom border-3 pb-2 mb-3">Kategori Paling Populer</div>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Minuman')">• Minuman</li>
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Makanan Ringan')">• Makanan Ringan</li>
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Kebutuhan Ibu & Bayi')">• Kebutuhan Ibu & Bayi</li>
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Peralatan Rumah')">• Peralatan Rumah</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Baju Lebaran')">• Baju Lebaran</li>
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Sayuran & Buah')">• Sayuran & Buah</li>
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Roti & Mentega')">• Roti & Mentega</li>
+                            <li class="mb-2" style="cursor: pointer;" onclick="selectCategory('Kopi & Teh')">• Kopi & Teh</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-12 mb-4">
+                <div class="h5 border-bottom border-3 pb-2 mb-3">Customer Service</div>
+                <ul class="list-unstyled">
+                    <li class="mb-2" style="cursor: pointer;" onclick="openPage('about')">• About Us</li>
+                    <li class="mb-2" style="cursor: pointer;" onclick="openPage('faq')">• FAQ</li>
+                    <li class="mb-2" style="cursor: pointer;" onclick="openPage('terms')">• Syarat & Ketentuan</li>
+                    <li class="mb-2" style="cursor: pointer;" onclick="openPage('privacy')">• Privacy Policy</li>
+                    <li class="mb-2" style="cursor: pointer;" onclick="openPage('returns')">• Pengembalian Barang</li>
+                </ul>
+                
+                <!-- Newsletter Signup -->
+                <div class="mt-4">
+                    <div class="h6 mb-3">Newsletter</div>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email address" id="newsletter-email">
+                        <button class="interactive-btn" onclick="subscribeNewsletter()">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-top pt-3 mt-4 text-center">
+            <p>&copy; 2025 All rights reserved. ArklayMart Indonesia Ltd.</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
